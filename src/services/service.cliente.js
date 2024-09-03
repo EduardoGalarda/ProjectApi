@@ -1,19 +1,23 @@
-import { query } from "../database/sqlite.js";
+import repoCliente from "../repositories/sqlite/repository.cliente.sqlite.js";
 
 async function Listar(nome) {
-  return await query("select * from cliente", []);
+  const clientes = await repoCliente.Listar(nome);
+  return clientes;
 }
 
 async function Editar(id_cliente, nome, endereco, cidade) {
-  return { id_cliente, nome, endereco, cidade };
+  const cliente = await repoCliente.Editar(id_cliente, nome, endereco, cidade);
+  return cliente;
 }
 
 async function Inserir(nome, endereco, cidade) {
-  return { id_cliente: 4, nome, endereco, cidade };
+  const cliente = await repoCliente.Inserir(nome, endereco, cidade);
+  return cliente;
 }
 
 async function Excluir(id_cliente) {
-  return { id_cliente };
+  const cliente = await repoCliente.Excluir(id_cliente);
+  return cliente;
 }
 
 export default { Listar, Editar, Inserir, Excluir };

@@ -11,6 +11,13 @@ async function Editar(id_cliente, nome, endereco, cidade) {
 }
 
 async function Inserir(nome, endereco, cidade) {
+  
+  // CONDICIONAIS DE ERROS
+  if (!nome) throw "Informe o nome do cliente";
+  if (nome.length < 3) throw "O nome do cliente deve conter mais do que três caracteres";
+  if (!endereco) throw "Informe o endereço do cliente";
+  if (!cidade) throw "Informe a cidade do cliente";
+
   const cliente = await repoCliente.Inserir(nome, endereco, cidade);
   return cliente;
 }

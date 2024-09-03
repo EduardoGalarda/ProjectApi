@@ -16,10 +16,16 @@ async function Editar(req, res) {
 }
 
 async function Inserir(req, res) {
-  const { nome, endereco, cidade } = req.body;
-  const cliente = await serviceCliente.Inserir(nome, endereco, cidade);
 
-  res.status(201).json(cliente);
+  try {    
+
+    const { nome, endereco, cidade } = req.body;
+    const cliente = await serviceCliente.Inserir(nome, endereco, cidade);
+    res.status(201).json(cliente);   
+     
+  } catch (err) {
+    res.status(500).json({error: err})
+  }
 }
 
 async function Excluir(req, res) {

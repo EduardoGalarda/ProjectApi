@@ -1,4 +1,5 @@
-import repoCliente from "../repositories/sqlite/repository.cliente.sqlite.js";
+// import repoCliente from "../repositories/sqlite/repository.cliente.sqlite.js";
+import repoCliente from "../repositories/prisma/repository.cliente.prisma.js";
 
 async function Listar(nome) {
   const clientes = await repoCliente.Listar(nome);
